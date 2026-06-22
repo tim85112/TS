@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowLeft, Building2, CheckCircle2, Loader2, Mail, MapPin, Phone, UserRound, Users } from 'lucide-react';
+import { ArrowLeft, Building2, Loader2, Mail, MapPin, Phone, UserRound } from 'lucide-react';
 import { LINKS } from '../constants';
 
 interface BuildingIntakeProps {
@@ -76,7 +76,7 @@ const BuildingIntake: React.FC<BuildingIntakeProps> = ({ onBack }) => {
         throw new Error(data?.message || '送出失敗，請稍後再試');
       }
       setForm(INITIAL_FORM);
-      setSuccessMessage(data.message || '已收到申請，我們會評估後與您聯繫。');
+      setSuccessMessage(data.message || '已收到申請。');
     } catch (submitError) {
       setError(submitError instanceof Error ? submitError.message : '送出失敗，請稍後再試');
     } finally {
@@ -95,27 +95,7 @@ const BuildingIntake: React.FC<BuildingIntakeProps> = ({ onBack }) => {
           返回首頁
         </button>
 
-        <div className="grid gap-8 lg:grid-cols-[1fr_480px] lg:items-start">
-          <section className="rounded-3xl bg-white p-8 shadow-xl border border-gray-100">
-            <div className="inline-flex items-center rounded-full border border-brand-red/20 bg-brand-red/10 px-4 py-1.5 text-sm font-medium text-brand-red">
-              <Building2 className="mr-2 h-4 w-4" />
-              商辦進駐評估
-            </div>
-            <h1 className="mt-6 text-3xl font-extrabold leading-tight text-gray-900 md:text-5xl">
-              想讓商辦駝獸進駐你的大樓？
-            </h1>
-            <p className="mt-5 text-lg leading-8 text-gray-600">
-              留下大樓與聯絡資訊後，我們會先評估人數、地點交通、停車方便度與放餐處。
-              若午餐需求約有 15-20 人以上，我們會優先聯繫行政或窗口討論試營運。
-            </p>
-
-            <div className="mt-8 grid gap-4 sm:grid-cols-3">
-              <InfoCard icon={<Users className="h-5 w-5" />} title="需求門檻" body="約 15-20 位以上較適合評估" />
-              <InfoCard icon={<MapPin className="h-5 w-5" />} title="現場條件" body="交通、停車、取餐動線都會看" />
-              <InfoCard icon={<CheckCircle2 className="h-5 w-5" />} title="後續聯繫" body="合適後再由我們主動聯絡" />
-            </div>
-          </section>
-
+        <div className="mx-auto max-w-xl">
           <form onSubmit={handleSubmit} className="rounded-3xl border border-gray-100 bg-white p-6 shadow-xl">
             <h2 className="text-2xl font-bold text-gray-900">公司合作申請</h2>
             <p className="mt-2 text-sm leading-6 text-gray-500">
@@ -199,7 +179,7 @@ const BuildingIntake: React.FC<BuildingIntakeProps> = ({ onBack }) => {
                   送出中
                 </>
               ) : (
-                '送出進駐申請'
+                '送出申請'
               )}
             </button>
           </form>
@@ -229,18 +209,6 @@ function Field({
       </span>
       {children}
     </label>
-  );
-}
-
-function InfoCard({ icon, title, body }: { icon: React.ReactNode; title: string; body: string }) {
-  return (
-    <div className="rounded-2xl border border-gray-100 bg-brand-beige/30 p-4">
-      <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-brand-red/10 text-brand-red">
-        {icon}
-      </div>
-      <h3 className="font-bold text-gray-900">{title}</h3>
-      <p className="mt-1 text-sm leading-6 text-gray-500">{body}</p>
-    </div>
   );
 }
 
