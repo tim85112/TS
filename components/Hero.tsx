@@ -52,7 +52,7 @@ const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
               className="group flex items-center justify-center bg-white text-gray-800 border-2 border-gray-200 px-8 py-4 rounded-xl text-lg font-bold hover:border-brand-red hover:text-brand-red hover:-translate-y-1 transition-all duration-200"
             >
               <Users className="mr-2 w-5 h-5" />
-              我是行政 (申請進駐)
+              公司合作
             </button>
 
             <a
@@ -62,7 +62,7 @@ const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
               className="group flex items-center justify-center bg-white text-gray-800 border-2 border-gray-200 px-8 py-4 rounded-xl text-lg font-bold hover:border-brand-red hover:text-brand-red hover:-translate-y-1 transition-all duration-200"
             >
               <Building2 className="mr-2 w-5 h-5" />
-              我是餐廳 (申請合作)
+              餐廳合作
             </a>
 
             <a
@@ -72,7 +72,7 @@ const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
               className="group flex items-center justify-center bg-white text-gray-800 border-2 border-gray-200 px-8 py-4 rounded-xl text-lg font-bold hover:border-brand-red hover:text-brand-red hover:-translate-y-1 transition-all duration-200"
             >
               <Truck className="mr-2 w-5 h-5" />
-              我想加入(物流合作)
+              物流合作
             </a>
           </div>
 
