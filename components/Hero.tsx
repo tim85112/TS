@@ -1,9 +1,10 @@
 import React from 'react';
-import { ArrowRight, Coffee, Building2, Truck } from 'lucide-react';
+import { ArrowRight, Coffee, Building2, Truck, Users } from 'lucide-react';
 import { LINKS } from '../constants';
+import type { Page } from '../types';
 
 interface HeroProps {
-  onNavigate: (page: 'home' | 'buildingSelection') => void;
+  onNavigate: (page: Page) => void;
 }
 
 const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
@@ -44,6 +45,14 @@ const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
               <Coffee className="mr-2 w-5 h-5" />
               我是員工 (立即點餐)
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </button>
+
+            <button
+              onClick={() => onNavigate('buildingIntake')}
+              className="group flex items-center justify-center bg-white text-gray-800 border-2 border-gray-200 px-8 py-4 rounded-xl text-lg font-bold hover:border-brand-red hover:text-brand-red hover:-translate-y-1 transition-all duration-200"
+            >
+              <Users className="mr-2 w-5 h-5" />
+              我是行政 (申請進駐)
             </button>
 
             <a

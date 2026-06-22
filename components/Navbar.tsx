@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { LINKS } from '../constants';
+import type { Page } from '../types';
 
 interface NavbarProps {
-  onNavigate: (page: 'home' | 'buildingSelection') => void;
+  onNavigate: (page: Page) => void;
 }
 
 const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
@@ -31,6 +32,12 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
             <button onClick={() => scrollToSection('how-it-works')} className="text-gray-600 hover:text-brand-red transition-colors">運作流程</button>
             <button onClick={() => scrollToSection('partners')} className="text-gray-600 hover:text-brand-red transition-colors">合作夥伴</button>
             <div className="flex space-x-4">
+              <button
+                onClick={() => onNavigate('buildingIntake')}
+                className="text-brand-red font-medium hover:text-red-700 px-3 py-2"
+              >
+                公司合作
+              </button>
               <a
                 href={LINKS.restaurantLine}
                 target="_blank"
@@ -64,9 +71,18 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
             <button onClick={() => scrollToSection('how-it-works')} className="block w-full text-left px-3 py-2 text-gray-600 hover:text-brand-red hover:bg-brand-beige/30 rounded-md">運作流程</button>
             <button onClick={() => scrollToSection('partners')} className="block w-full text-left px-3 py-2 text-gray-600 hover:text-brand-red hover:bg-brand-beige/30 rounded-md">合作夥伴</button>
             <div className="mt-4 flex flex-col space-y-2 px-3">
+              <button
+                onClick={() => {
+                  setIsOpen(false);
+                  onNavigate('buildingIntake');
+                }}
+                className="block w-full text-center border-2 border-brand-red text-brand-red px-4 py-2 rounded-lg font-medium"
+              >
+                公司合作
+              </button>
               <a
                 href={LINKS.restaurantLine}
-                className="block w-full text-center border-2 border-brand-red text-brand-red px-4 py-2 rounded-lg font-medium"
+                className="block w-full text-center border border-gray-200 text-gray-700 px-4 py-2 rounded-lg font-medium"
               >
                 餐廳合作
               </a>

@@ -1,9 +1,10 @@
 import React from 'react';
 import { Phone, MessageCircle } from 'lucide-react';
 import { CONTACTS, LINKS } from '../constants';
+import type { Page } from '../types';
 
 interface FooterProps {
-  onNavigate: (page: 'home' | 'buildingSelection') => void;
+  onNavigate: (page: Page) => void;
 }
 
 const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
@@ -34,6 +35,14 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                   className="text-gray-400 hover:text-white transition-colors"
                 >
                   商辦員工訂餐 (Line)
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => onNavigate('buildingIntake')}
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  公司行政申請進駐
                 </button>
               </li>
               <li>
