@@ -18,9 +18,9 @@ const Partners: React.FC = () => {
             >
               <div className="w-full h-16 flex items-center justify-center mb-2 overflow-hidden">
                  {partner.logo ? (
-                   <img 
-                     src={partner.logo} 
-                     alt={`${partner.name} logo`} 
+                   <img
+                     src={partner.logo}
+                     alt={`${partner.name} logo`}
                      className="max-w-full max-h-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300 opacity-70 group-hover:opacity-100"
                      onError={(e) => {
                        const target = e.target as HTMLImageElement;
