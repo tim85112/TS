@@ -23,12 +23,15 @@ interface Building {
 
 const BUILDINGS: Record<District, Building[]> = {
     '市政中心': [
-        { name: '順天經貿大樓 (STTC)', status: 'opened', lineUrl: 'https://lin.ee/ZP3h0Xp', note: '持續配送中' },
+        { name: '凱基人壽市政大樓', status: 'opened', lineUrl: 'https://lin.ee/uTQG4LH', note: '近期正式啟用' },
+        { name: '興富發鼎盛 BHW', status: 'developing' },
+        { name: 'W 國際商務中心－七期旗艦館', status: 'developing' },
         { name: 'NTC 國家商貿中心', status: 'developing' },
         { name: 'CBD 時代廣場', status: 'developing' },
-        { name: '鼎盛 BHW', status: 'developing' },
-        { name: '親家市政廣場', status: 'developing' },
-        { name: '市政都心', status: 'developing' },
+        { name: '臺中銀行總行大樓', status: 'developing' },
+        { name: '豐邑市政都心廣場', status: 'developing' },
+        { name: 'TOP1 環球經貿中心', status: 'developing' },
+        { name: '聯聚中雍大廈', status: 'developing' },
     ],
     '台灣大道': [
         { name: '龍邦世貿', status: 'developing' },
