@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ArrowLeft, Building2, MapPin } from 'lucide-react';
 import { LINKS } from '../constants';
+import BuildingWishModal from './BuildingWishModal';
 
 interface BuildingSelectionProps {
     onBack: () => void;
@@ -17,6 +18,7 @@ const DISTRICTS: { id: District; name: string; desc: string }[] = [
 interface Building {
     name: string;
     status: 'opened' | 'developing';
+    slug?: string;
     lineUrl?: string;
     note?: string;
 }
@@ -24,14 +26,15 @@ interface Building {
 const BUILDINGS: Record<District, Building[]> = {
     '市政中心': [
         { name: '凱基人壽市政大樓', status: 'opened', lineUrl: 'https://lin.ee/uTQG4LH', note: '近期正式啟用' },
-        { name: '興富發鼎盛 BHW', status: 'developing' },
-        { name: 'W 國際商務中心－七期旗艦館', status: 'developing' },
-        { name: 'NTC 國家商貿中心', status: 'developing' },
-        { name: 'CBD 時代廣場', status: 'developing' },
-        { name: '臺中銀行總行大樓', status: 'developing' },
-        { name: '豐邑市政都心廣場', status: 'developing' },
-        { name: 'TOP1 環球經貿中心', status: 'developing' },
-        { name: '聯聚中雍大廈', status: 'developing' },
+        { name: '順天經貿廣場 (STTC)', status: 'opened', lineUrl: 'https://lin.ee/ZP3h0Xp', note: '持續配送中' },
+        { name: '興富發鼎盛 BHW', slug: 'hfh-dingsheng-bhw', status: 'developing' },
+        { name: 'W 國際商務中心－七期旗艦館', slug: 'w-international-qiqi', status: 'developing' },
+        { name: 'NTC 國家商貿中心', slug: 'ntc-national-trade', status: 'developing' },
+        { name: 'CBD 時代廣場', slug: 'cbd-times-square', status: 'developing' },
+        { name: '臺中銀行總行大樓', slug: 'taichung-bank-headquarters', status: 'developing' },
+        { name: '豐邑市政都心廣場', slug: 'fongyi-civic-center', status: 'developing' },
+        { name: 'TOP1 環球經貿中心', slug: 'top1-global-trade', status: 'developing' },
+        { name: '聯聚中雍大廈', slug: 'lianju-zhongyong', status: 'developing' },
     ],
     '台灣大道': [
         { name: '龍邦世貿', status: 'developing' },
@@ -51,10 +54,13 @@ const BUILDINGS: Record<District, Building[]> = {
 const BuildingSelection: React.FC<BuildingSelectionProps> = ({ onBack }) => {
     const [selectedDistrict, setSelectedDistrict] = useState<District | null>(null);
     const [showModal, setShowModal] = useState(false);
+    const [wishBuilding, setWishBuilding] = useState<Building | null>(null);
 
     const handleBuildingClick = (building: Building) => {
         if (building.status === 'opened' && building.lineUrl) {
             window.open(building.lineUrl, '_blank');
+        } else if (building.slug) {
+            setWishBuilding(building);
         } else {
             setShowModal(true);
         }
@@ -117,7 +123,9 @@ const BuildingSelection: React.FC<BuildingSelectionProps> = ({ onBack }) => {
                                     onClick={() => handleBuildingClick(building)}
                                     className={`relative p-5 rounded-xl border-2 text-left flex justify-between items-center transition-all ${building.status === 'opened'
                                         ? 'border-brand-red bg-brand-red/5 hover:bg-brand-red/10 group'
-                                        : 'border-gray-100 bg-gray-50 opacity-70 hover:opacity-100 hover:border-gray-300'
+                                        : building.slug
+                                            ? 'border-gray-100 bg-gray-50 hover:border-brand-red/40 hover:bg-white'
+                                            : 'border-gray-100 bg-gray-50 opacity-70 hover:opacity-100 hover:border-gray-300'
                                         }`}
                                 >
                                     <div>
@@ -132,6 +140,10 @@ const BuildingSelection: React.FC<BuildingSelectionProps> = ({ onBack }) => {
                                     {building.status === 'opened' ? (
                                         <span className="bg-brand-red text-white text-sm font-bold px-4 py-2 rounded-lg group-hover:scale-105 transition-transform shadow-md">
                                             點我點餐
+                                        </span>
+                                    ) : building.slug ? (
+                                        <span className="text-xs text-brand-red border border-brand-red/30 bg-white px-3 py-1 rounded-full font-medium">
+                                            連署開發中
                                         </span>
                                     ) : (
                                         <span className="text-xs text-gray-400 border border-gray-200 px-3 py-1 rounded-full">
@@ -186,6 +198,13 @@ const BuildingSelection: React.FC<BuildingSelectionProps> = ({ onBack }) => {
                         </button>
                     </div>
                 </div>
+            )}
+            {wishBuilding?.slug && (
+                <BuildingWishModal
+                    buildingName={wishBuilding.name}
+                    buildingSlug={wishBuilding.slug}
+                    onClose={() => setWishBuilding(null)}
+                />
             )}
         </div>
     );
