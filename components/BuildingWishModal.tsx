@@ -99,10 +99,17 @@ const BuildingWishModal: React.FC<BuildingWishModalProps> = ({ buildingName, bui
           <form onSubmit={submit} className="mt-6 space-y-4" noValidate>
             <label className="block text-sm font-bold text-gray-700">姓名 <span className="text-brand-red">*</span><input value={form.contactName} onChange={(event) => update('contactName', event.target.value)} maxLength={80} className="mt-2 w-full rounded-xl border border-gray-200 px-4 py-3 outline-none focus:border-brand-red focus:ring-4 focus:ring-brand-red/10" /></label>
             <label className="block text-sm font-bold text-gray-700">公司名稱 <span className="text-brand-red">*</span><input value={form.companyName} onChange={(event) => update('companyName', event.target.value)} maxLength={120} className="mt-2 w-full rounded-xl border border-gray-200 px-4 py-3 outline-none focus:border-brand-red focus:ring-4 focus:ring-brand-red/10" /></label>
-            <div className="grid gap-4 sm:grid-cols-2"><label className="block text-sm font-bold text-gray-700">手機 <span className="font-normal text-gray-400">擇一</span><input value={form.phone} onChange={(event) => update('phone', event.target.value)} inputMode="tel" maxLength={40} className="mt-2 w-full rounded-xl border border-gray-200 px-4 py-3 outline-none focus:border-brand-red focus:ring-4 focus:ring-brand-red/10" /></label><label className="block text-sm font-bold text-gray-700">Email <span className="font-normal text-gray-400">擇一</span><input value={form.email} onChange={(event) => update('email', event.target.value)} inputMode="email" maxLength={160} className="mt-2 w-full rounded-xl border border-gray-200 px-4 py-3 outline-none focus:border-brand-red focus:ring-4 focus:ring-brand-red/10" /></label></div>
-            <label className="flex items-start gap-3 text-sm leading-6 text-gray-600"><input type="checkbox" checked={form.privacyConsent} onChange={(event) => update('privacyConsent', event.target.checked)} className="mt-1" /><span>我同意商辦駝獸為通知進駐消息蒐集與使用上述聯絡資料。</span></label>
+            <fieldset>
+              <legend className="text-sm font-bold text-gray-700">聯絡方式 <span className="text-brand-red">*</span></legend>
+              <p className="mt-1 text-sm text-gray-500">手機或 Email 填一個就好，我們會在進駐時通知你。</p>
+              <div className="mt-3 grid gap-3 sm:grid-cols-2">
+                <label className="block text-sm font-medium text-gray-700">手機號碼<input value={form.phone} onChange={(event) => update('phone', event.target.value)} inputMode="tel" autoComplete="tel" maxLength={40} className="mt-2 w-full rounded-xl border border-gray-200 px-4 py-3 outline-none focus:border-brand-red focus:ring-4 focus:ring-brand-red/10" /></label>
+                <label className="block text-sm font-medium text-gray-700">Email<input value={form.email} onChange={(event) => update('email', event.target.value)} inputMode="email" autoComplete="email" maxLength={160} className="mt-2 w-full rounded-xl border border-gray-200 px-4 py-3 outline-none focus:border-brand-red focus:ring-4 focus:ring-brand-red/10" /></label>
+              </div>
+            </fieldset>
+            <label className="flex items-start gap-3 text-sm leading-6 text-gray-600"><input type="checkbox" checked={form.privacyConsent} onChange={(event) => update('privacyConsent', event.target.checked)} className="mt-1" /><span>我同意商辦駝獸使用以上資料，在這棟大樓進駐時通知我。</span></label>
             {error && <p role="alert" className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">{error}</p>}
-            <button type="submit" disabled={isSubmitting} className="flex w-full items-center justify-center rounded-xl bg-brand-red px-5 py-4 font-bold text-white shadow-lg hover:bg-red-700 disabled:opacity-60">{isSubmitting ? <><Loader2 className="mr-2 h-5 w-5 animate-spin" />送出中</> : '送出連署'}</button>
+            <button type="submit" disabled={isSubmitting} className="flex w-full items-center justify-center rounded-xl bg-brand-red px-5 py-4 font-bold text-white shadow-lg hover:bg-red-700 disabled:opacity-60">{isSubmitting ? <><Loader2 className="mr-2 h-5 w-5 animate-spin" />送出中</> : '我要連署'}</button>
           </form>
         )}
       </div>
