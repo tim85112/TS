@@ -35,6 +35,7 @@ const BUILDINGS: Record<District, Building[]> = {
         { name: '豐邑市政都心廣場', slug: 'fongyi-civic-center', status: 'developing' },
         { name: 'TOP1 環球經貿中心', slug: 'top1-global-trade', status: 'developing' },
         { name: '聯聚中雍大廈', slug: 'lianju-zhongyong', status: 'developing' },
+        { name: '中國信託銀行－市政分行', slug: 'ctbc-shizheng-branch', status: 'developing' },
     ],
     '台灣大道': [
         { name: '龍邦世貿', status: 'developing' },
