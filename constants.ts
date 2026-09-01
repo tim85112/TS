@@ -54,12 +54,15 @@ export const PARTNERS = [
   { name: "炒飯超人", logo: "/logos/33.jpg" },
   { name: "芮可咖啡", logo: "/logos/34.jpg" },
   { name: "裡好早午餐", logo: "/logos/35.jpg" },
+  { name: "簡簡JianJian健康餐盒", logo: "/logos/36.jpg" },
+  { name: "Le Walthert 瑞士乾酪", logo: "/logos/37.jpg" },
+  { name: "自慢嗑旅", logo: "/logos/38.jpg" },
+  { name: "叁時叁便當", logo: "/logos/39.jpg" },
   { name: "無限好油飯", logo: "" },
   { name: "發居齋素食", logo: "" },
   { name: "三分味牛肉麵", logo: "" },
   { name: "意品香佛跳牆", logo: "" },
   { name: "糊塗麵", logo: "" },
-  { name: "簡簡JianJian健康餐盒", logo: "" },
   { name: "麻古", logo: "" },
 ];
 
